@@ -1,10 +1,13 @@
-// page.tsx
-const Homepage = () => {
+import ProductList from "@/components/shared/product/product-list";
+import { getLatestProducts } from "@/lib/actions/product.actions";
+
+const Homepage = async () => {
+  const latestProducts = await getLatestProducts();
+
   return (
-    // Thêm các lớp trực tiếp để kiểm tra biến thể lg:
-    <div>
-      Prostore
-    </div>
+    <>
+      <ProductList data={latestProducts} title="Newest Arrivals" limit={4} />
+    </>
   );
 }
 
