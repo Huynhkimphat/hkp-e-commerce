@@ -106,12 +106,7 @@ const ProductForm = ({
           <FormField
             control={form.control}
             name='name'
-            render={({
-              field,
-            }: {
-              field: ControllerRenderProps<z.infer<typeof insertProductSchema>,
-              'name'>;
-            }) => (
+            render={({ field }) => (
               <FormItem className='w-full'>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
@@ -125,14 +120,7 @@ const ProductForm = ({
           <FormField
             control={form.control}
             name='slug'
-            render={({
-              field,
-            }: {
-              field: ControllerRenderProps<
-                z.infer<typeof insertProductSchema>,
-                'slug'
-              >;
-            }) => (
+            render={({ field }) => (
               <FormItem className='w-full'>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
@@ -354,14 +342,7 @@ const ProductForm = ({
           <FormField
             control={form.control}
             name='description'
-            render={({
-              field,
-            }: {
-              field: ControllerRenderProps<
-                z.infer<typeof insertProductSchema>,
-                'description'
-              >;
-            }) => (
+            render={({ field }) => (
               <FormItem className='w-full'>
                 <FormLabel>Description</FormLabel>
                 <FormControl>

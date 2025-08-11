@@ -20,6 +20,13 @@ export async function getLatestProducts() {
   const data = await prisma.product.findMany({
     take: LATEST_PRODUCTS_LIMIT,
     orderBy: { createdAt: 'desc' },
+    include: {
+      store: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   return convertToPlainObject(data);
@@ -29,6 +36,13 @@ export async function getLatestProducts() {
 export async function getProductBySlug(slug: string) {
   return await prisma.product.findFirst({
     where: { slug: slug },
+    include: {
+      store: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 }
 
@@ -36,6 +50,13 @@ export async function getProductBySlug(slug: string) {
 export async function getProductById(productId: string) {
   const data = await prisma.product.findFirst({
     where: { id: productId },
+    include: {
+      store: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   return convertToPlainObject(data);
@@ -106,6 +127,13 @@ export async function getAllProducts({
       ...priceFilter,
       ...ratingFilter,
       ...storeFilter,
+    },
+    include: {
+      store: {
+        select: {
+          name: true,
+        },
+      },
     },
     orderBy:
       sort === 'lowest'
@@ -239,6 +267,13 @@ export async function getFeaturedProducts() {
     where: { isFeatured: true },
     orderBy: { createdAt: 'desc' },
     take: 4,
+    include: {
+      store: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   return convertToPlainObject(data);

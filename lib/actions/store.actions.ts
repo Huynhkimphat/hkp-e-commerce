@@ -62,7 +62,6 @@ export const createStore = async (values: CreateStoreParams) => {
 
     const { storeName, slug, description } = validatedFields.data;
 
-    // Sửa lỗi ở đây: Thêm trường `creator`
     const newStore = await db.store.create({
       data: {
         name: storeName,
@@ -114,7 +113,7 @@ export const deleteStore = async (id: string) => {
       return { success: false, message: 'Not authorized to delete a store.' };
     }
     
-    // Xóa cửa hàng
+    //Delete store
     const deletedStore = await prisma.store.delete({
       where: {
         id,
@@ -127,11 +126,11 @@ export const deleteStore = async (id: string) => {
     }
 
     revalidatePath('/admin/stores');
-    // Trả về đối tượng phù hợp với DeleteDialog
+    // Returen DeleteDialog
     return { success: true, message: 'Store deleted successfully.' };
   } catch (error) {
     console.error('Error deleting store:', error);
-    // Trả về đối tượng lỗi phù hợp
+    // Return error
     return { success: false, message: 'Failed to delete store.' };
   }
 };

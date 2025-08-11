@@ -30,12 +30,12 @@ export default async function StorePage({ params }: StorePageProps) {
     notFound();
   }
 
-  // Transform products to match Product type (convert Decimal to string)
+  // Transform products to match ProductWithStore type (convert Decimal to string)
   const transformedProducts = storeData.products.map((product) => ({
     ...product,
     price: product.price.toString(),
     rating: product.rating.toString(),
-    store: product.store?.name || '',
+    store: product.store ? { name: product.store.name } : null,
   }));
 
   return (
