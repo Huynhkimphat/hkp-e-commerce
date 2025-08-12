@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const EditStorePage = async ({ params }: { params: Promise<{ id: string }> }) => {
   await requireAdmin();
 
-  const { id } = await params; // Sửa lỗi ở đây: await params trước khi lấy id
+  const { id } = await params; 
 
   const store = await getStoreById(id);
 

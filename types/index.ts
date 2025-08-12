@@ -17,6 +17,12 @@ export type Product = z.infer<typeof insertProductSchema> & {
   createdAt: Date;
 };
 
+export type ProductWithStore = Omit<Product, 'store'> & {
+  store?: {
+    name: string;
+  } | null;
+};
+
 export type Cart = z.infer<typeof insertCartSchema>;
 export type CartItem = z.infer<typeof cartItemSchema>;
 export type ShippingAddress = z.infer<typeof shippingAddressSchema>;

@@ -4,10 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import ProductPrice from './product-price';
-import { Product } from '@/types';
+import { ProductWithStore } from '@/types';
 import Rating from './rating';
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product }: { product: ProductWithStore }) => {
   return (
     <Card className='w-full max-w-sm'>
       <CardHeader className='p-0 items-center'>
@@ -28,7 +28,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </Link>
         {/* Thêm code này để hiển thị tên cửa hàng */}
         <div className='text-xs text-gray-500'>
-          {product.store}
+          {product.store?.name || 'No store'}
         </div>
         <div className='flex-between gap-4'>
           <Rating value={Number(product.rating)} />

@@ -20,7 +20,7 @@ const AdminStoresPage = async (props: {
     query: string;
   }>;
 }) => {
-  await requireAdmin(); // Đảm bảo chỉ admin mới có quyền truy cập
+  await requireAdmin(); 
 
   const searchParams = await props.searchParams;
   const page = Number(searchParams.page) || 1;

@@ -7,12 +7,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Product } from '@/types';
+import { ProductWithStore } from '@/types';
 import Autoplay from 'embla-carousel-autoplay';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const ProductCarousel = ({ data }: { data: Product[] }) => {
+const ProductCarousel = ({ data }: { data: ProductWithStore[] }) => {
   return (
     <Carousel
       className='w-full mb-12'
@@ -28,7 +28,7 @@ const ProductCarousel = ({ data }: { data: Product[] }) => {
       ]}
     >
       <CarouselContent>
-        {data.map((product: Product) => {
+        {data.map((product: ProductWithStore) => {
           // Only render carousel item if product has a valid banner
           if (!product.banner || product.banner.trim() === '') {
             return null;

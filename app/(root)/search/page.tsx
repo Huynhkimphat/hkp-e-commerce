@@ -124,11 +124,8 @@ const SearchPage = async (props: {
 
   const categories = await getAllCategories();
 
-  // Tạo một mảng mới để hiển thị tên cửa hàng
-  const transformedProducts = products.data.map((product) => ({
-    ...product,
-    store: product.storeId || '',
-  }));
+  // Products already have store information from getAllProducts
+  const transformedProducts = products.data;
 
   return (
     <div className='grid md:grid-cols-5 md:gap-5'>
